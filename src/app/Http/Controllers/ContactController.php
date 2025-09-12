@@ -9,10 +9,9 @@ use App\Models\Contact;
 class ContactController extends Controller
 {
     //
-    public function index(Request $request)
+    public function index()
     {
-        $contact = $request->session()->get('contact');
-        return view('index', compact('contact'));
+        return view('index');
     }
 
     public function confirm(ContactRequest $request)

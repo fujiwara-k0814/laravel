@@ -18,9 +18,9 @@
         <div class="header__inner">
             <div class="header-utilities">
                 <h1 class="header__logo">FashionablyLate</h1>
-                <nav>
-                    <ul class="header-nav">
-                        @yield('header-buttons')
+                <nav class="header-nav">
+                    <ul>
+                        @yield('header-button')
                     </ul>
                 </nav>
             </div>

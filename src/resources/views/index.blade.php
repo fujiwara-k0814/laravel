@@ -18,7 +18,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="last_name" placeholder="例:山田" value="{{ old('last_name') }}">
+                    <input type="text" name="last_name" placeholder="例: 山田" value="{{ old('last_name') }}">
                     <div class="form__error">
                         @error('last_name')
                             {{ $message }}
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="form__input--text">
-                    <input type="text" name="first_name" placeholder="例:太郎" value="{{ old('first_name') }}">
+                    <input type="text" name="first_name" placeholder="例: 太郎" value="{{ old('first_name') }}">
                     <div class="form__error">
                         @error('first_name')
                             {{ $message }}
@@ -66,7 +66,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="email" placeholder="例:test@example.com" value="{{ old('email') }}">
+                    <input type="text" name="email" placeholder="例: test@example.com" value="{{ old('email') }}">
                     <div class="form__error">
                         @error('email')
                             {{ $message }}
@@ -116,7 +116,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="address" placeholder="例:東京都渋谷区千駄ヶ谷1-2-3" value="{{ old('address') }}">
+                    <input type="text" name="address" placeholder="例: 東京都渋谷区千駄ヶ谷1-2-3" value="{{ old('address') }}">
                     <div class="form__error">
                         @error('address')
                             {{ $message }}
@@ -131,7 +131,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="building" placeholder="例:千駄ヶ谷マンション101" value="{{ old('building') }}">
+                    <input type="text" name="building" placeholder="例: 千駄ヶ谷マンション101" value="{{ old('building') }}">
                 </div>
             </div>
         </div>
