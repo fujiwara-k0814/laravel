@@ -8,6 +8,7 @@ use App\Models\Contact;
 
 class ContactController extends Controller
 {
+    //
     public function index(Request $request)
     {
         $contact = $request->session()->get('contact');
@@ -58,9 +59,9 @@ class ContactController extends Controller
         ]);
 
         $contact['tel'] = $tel;
-
+        
         Contact::create($contact);
-
+    
         return view('thanks');
     }
 

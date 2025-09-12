@@ -17,10 +17,16 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+//お問い合わせフォーム
 Route::get('/', [ContactController::class, 'index']);
 Route::post('/', [ContactController::class, 'edit']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
+
+
+//登録・ログイン・ログアウト
+// Route::get('/register', [AuthController::class, 'register']);
+// Route::post('/register', [AuthController::class, 'store']);
 
 
 
