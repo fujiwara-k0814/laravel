@@ -1,0 +1,41 @@
+.admin__content {
+    margin: 0 auto;
+    padding: 10px 15px;
+    max-width: 1230px;
+}
+
+.admin__heading {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.search__group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-action__content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-table__inner {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+svg.w-5.h-5 {
+    width: 20px;
+    height: 20px;
+}
+
+.admin-mordal {
+    display: none;
+}
+
+.admin-mordal:target {
+    display: block;
+}

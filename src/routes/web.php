@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ExportController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,13 @@ Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
 
 
-//ログイン
+//管理画面
 Route::middleware('auth')->group(function(){
-    Route::get('/admin', [AuthController::class, 'index']);
+    Route::get('/admin', [AdminController::class, 'index']);
 });
+Route::get('/admin/search', [AdminController::class, 'search']);
+Route::delete('/admin/delete', [AdminController::class, 'destroy']);
 
 
+//エクスポート
+Route::get('/admin/export', [ExportController::class, 'export']);

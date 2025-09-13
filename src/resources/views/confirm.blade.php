@@ -9,7 +9,7 @@
     <div class="confirm__heading">
         <h2 class="confirm__title">Confirm</h2>
     </div>
-    <form action="/thanks" class="form" method="POST">
+    <form action="/thanks" class="confirm-form" method="POST">
         @csrf
         <div class="confirm-table">
             <table class="confirm-table__inner">
@@ -19,8 +19,16 @@
                         {{ $contact['last_name'] }}
                         <span class="space"></span>
                         {{ $contact['first_name'] }}
-                        <input type="hidden" name="last_name" value="{{ $contact['last_name'] }}">
-                        <input type="hidden" name="first_name" value="{{ $contact['first_name'] }}">
+                        <input 
+                            type="hidden" 
+                            name="last_name" 
+                            value="{{ $contact['last_name'] }}"
+                        >
+                        <input 
+                            type="hidden" 
+                            name="first_name" 
+                            value="{{ $contact['first_name'] }}"
+                        >
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
@@ -34,13 +42,22 @@
                             ];
                         @endphp
                         {{ $genderLabels[$contact['gender']] }}
-                        <input type="hidden" name="gender" value="{{ $contact['gender'] }}">
+                        <input 
+                            type="hidden" 
+                            name="gender" 
+                            value="{{ $contact['gender'] }}"
+                        >
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">メールアドレス</th>
                     <td class="confirm-table__text">
-                        <input type="email" name="email" value="{{ $contact['email'] }}" readonly>
+                        <input 
+                            type="email" 
+                            name="email" 
+                            value="{{ $contact['email'] }}" 
+                            readonly
+                        >
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
@@ -55,13 +72,23 @@
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">住所</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="address" value="{{ $contact['address'] }}" readonly>
+                        <input 
+                            type="text" 
+                            name="address" 
+                            value="{{ $contact['address'] }}" 
+                            readonly
+                        >
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">建物名</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="building" value="{{ $contact['building'] }}" readonly>
+                        <input 
+                            type="text" 
+                            name="building" 
+                            value="{{ $contact['building'] }}" 
+                            readonly
+                        >
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
@@ -77,13 +104,22 @@
                             ];
                         @endphp
                         {{ $categoryLabels[$contact['category_id']] }}
-                        <input type="hidden" name="category_id" value="{{ $contact['category_id'] }}">
+                        <input 
+                            type="hidden" 
+                            name="category_id" 
+                            value="{{ $contact['category_id'] }}"
+                        >
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お問い合わせ内容</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="detail" value="{{ $contact['detail'] }}" readonly>
+                        <input 
+                            type="text" 
+                            name="detail" 
+                            value="{{ $contact['detail'] }}" 
+                            readonly
+                        >
                     </td>
                 </tr>
             </table>
@@ -92,7 +128,7 @@
             <button type="submit" class="form__button-submit">送信</button>
         </div>
     </form>
-    <form action="/" method="POST">
+    <form action="/" class="edit-form" method="POST">
         @csrf
         <input type="hidden" name="last_name" value="{{ $contact['last_name'] }}">
         <input type="hidden" name="first_name" value="{{ $contact['first_name'] }}">

@@ -22,9 +22,9 @@ class ContactFactory extends Factory
             'last_name' => $faker->lastName,
             'gender' => $faker->numberBetween(1, 3),
             'email' => $faker->safeEmail,
-            'tel' => $faker->phoneNumber,
+            'tel' => str_replace('-', '', $faker->phoneNumber),
             'address' => $faker->prefecture() . $faker->city() . $faker->streetAddress(),
-            'building' => $faker->secondaryAddress,
+            'building' => $faker->randomElement(['', $faker->secondaryAddress()]),
             'detail' => $faker->realText(120)
         ];
     }

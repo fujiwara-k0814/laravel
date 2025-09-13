@@ -29,7 +29,7 @@ class ContactController extends Controller
             'category_id',
             'detail'
         ]);
-
+        
         return view('confirm', compact('contact'));
     }
 
