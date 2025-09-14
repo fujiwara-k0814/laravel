@@ -16,10 +16,10 @@
         <h2 class="login__title">Login</h2>
     </div>
     <div class="login-form__content">
-        <form action="/login" method="POST">
+        <form action="/login" class="form" method="POST">
             @csrf
             <div class="form__group">
-                <div class="form__group-taitle">
+                <div class="form__group-title">
                     <span class="form__label--item">メールアドレス</span>
                 </div>
                 <div class="form__group-content">
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="form__group">
-                <div class="form__group-taitle">
+                <div class="form__group-title">
                     <span class="form__label--item">パスワード</span>
                 </div>
                 <div class="form__group-content">

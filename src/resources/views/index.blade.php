@@ -30,6 +30,7 @@
                         @enderror
                     </div>
                 </div>
+                <span class="input__space"></span>
                 <div class="form__input--text">
                     <input 
                         type="text" 
@@ -54,24 +55,30 @@
                 <div class="form__radio">
                     <label class="form__radio-item">
                         <input 
-                            type="radio" 
+                            type="radio"
+                            class="radio__button" 
                             name="gender" 
                             value="1" {{ old('gender') == 1 ? 'checked' : '' }}
-                        >男性
+                        >
+                        <span class="radio__text">男性</span>
                     </label>
                     <label class="form__radio-item">
                         <input 
-                            type="radio" 
+                            type="radio"
+                            class="radio__button"  
                             name="gender" 
                             value="2" {{ old('gender') == 2 ? 'checked' : '' }}
-                        >女性
+                        >
+                        <span class="radio__text">女性</span>
                     </label>
                     <label class="form__radio-item">
                         <input 
-                            type="radio" 
+                            type="radio"
+                            class="radio__button"  
                             name="gender" 
                             value="3" {{ old('gender') == 3 ? 'checked' : '' }}
-                        >その他
+                        >
+                        <span class="radio__text">その他</span>
                     </label>
                     <div class="form__error">
                         @error('gender')
@@ -122,7 +129,7 @@
                         @enderror
                     </div>
 
-                    <span class="form__input-separator">-</span>
+                    <span class="input__hyphen-space">-</span>
 
                     <input 
                         type="text" 
@@ -137,7 +144,7 @@
                         @enderror
                     </div>
 
-                    <span class="form__input-separator">-</span>
+                    <span class="input__hyphen-space">-</span>
 
                     <input 
                         type="text" 
@@ -198,7 +205,7 @@
             <div class="form__group-content">
                 <div class="form__select">
                     <select name="category_id" class="form__select-item">
-                        <option value="">選択してください</option>
+                        <option value="" hidden>選択してください</option>
                         <option 
                             value="1" 
                             {{ old('category_id') == 1 ? 'selected' : '' }}
@@ -243,8 +250,7 @@
                     <textarea 
                         name="detail" 
                         placeholder="お問い合わせ内容をご記載ください"
-                        >{{ old('detail') }}
-                    </textarea>
+                        >{{ old('detail') }}</textarea>
                     <div class="form__error">
                         @error('detail')
                             {{ $message }}

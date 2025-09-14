@@ -1,6 +1,19 @@
+.header-button__logout {
+    cursor: pointer;
+    background-color: #f6f6f6;
+    border: 1px solid #d9c6b5;
+    text-decoration: none;
+    color: #d9c6b5;
+    font-family: "Inika", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    padding: 3px 18px;
+}
+
 .admin__content {
     margin: 0 auto;
-    padding: 10px 15px;
+    padding: 30px 0px;
     max-width: 1230px;
 }
 

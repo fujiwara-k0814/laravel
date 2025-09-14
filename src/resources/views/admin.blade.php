@@ -32,7 +32,7 @@
                 </div>
                 <div class="search__select-gender">
                     <select name="gender" class="select-gender__item">
-                        <option value="">性別</option>
+                        <option value="" hidden>性別</option>
                         <option 
                             value="-1" 
                             {{ old('gender', request('gender')) == -1 ? 'selected' : "" }}
@@ -57,7 +57,7 @@
                 </div>
                 <div class="search__select-content">
                     <select name="category_id" class="select-contact__item">
-                        <option value="">お問い合わせの種類</option>
+                        <option value="" hidden>お問い合わせの種類</option>
                         <option 
                             value="1" 
                             {{ old('category_id', request('category_id')) == 1 ? 'selected' : "" }}

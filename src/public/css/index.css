@@ -1,11 +1,11 @@
 .contact-form__content {
     margin: 0 auto;
-    padding: 10px 15px;
+    padding: 30px 0px;
     max-width: 1230px;
 }
 
 .contact-form__heading {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     text-align: center;
 }
 
@@ -14,13 +14,12 @@
     font-family: "Inika", serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 28px;
+    font-size: 34px;
 }
 
 .form {
     margin: 0 auto;
-    max-width: 800px;
-    padding: 0 20px;
+    width: 80%;
     text-align: center;
 }
 
@@ -28,43 +27,60 @@
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     width: 90%;
 }
 
 .form__label--item {
     color: #887a6d;
+    font-size: 20PX;
 }
 
 .form__label--required {
-    color: #e6b0af;
-    border-radius: 3px;
-    background: #fff0f0;
+    color: #ff9b9b;
+    font-size: 20px;
 }
 
 .form__group-content{
     display: flex;
-    width: 70%;
-    margin-bottom: 15px;
+    width: 65%;
 }
 
 .form__input--text {
-    width: 70%;
-    margin-right: 30px;
+    display: flex;
+    width: 100%;
+}
+
+.form__input--text input {
+    height: 35px;
+    line-height: 35px;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    border: none;
+    width: 100%;
 }
 
 .form__input--text input::placeholder {
     color: #d4d0ca;
-    font-size: 12px;
+    font-size: 14px;
+    font-family: "Inika", serif;
+    font-weight: 400;
+    font-style: normal;
+    padding-left: 30px;
 }
 
- .form__input--text input {
-    width: 90%;
-    padding: 5px;
-    background-color: #f5f5f5;
-    border-radius: 4px;
-    border: none;
- }
+input[name="tel1"]::placeholder,
+input[name="tel2"]::placeholder,
+input[name="tel3"]::placeholder {
+    text-align: center;
+    padding-right: 30px;
+}
+
+.input__space,
+.input__hyphen-space {
+    padding: 0 20px;
+}
 
 .form__radio {
     width: 70%;
@@ -74,5 +90,125 @@
 
 .form__radio-item {
     margin-right: 40px;
+}
+
+.radio__button {
+    appearance: none;
+}
+
+.radio__text {
+    position: relative;
+    cursor: pointer;
+    padding-left: 30px;
+}
+
+.radio__text::before {
+    content: '';
+    display: block; 
+    border-radius: 50%; 
+    background-color: white;
+    border: 1px solid #8b7969;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.radio__button:checked + .radio__text::after{
+    content: '';
+    display: block; 
+    border-radius: 50%; 
+    background-color: #8b7969;
+    border: 1px solid #8b7969;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.form__select {
+    width: 100%;
+    text-align: left;
+}
+
+.form__select {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    height: 35px;
+    line-height: 35px;
+    width: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form__select::before {
+    position: absolute;
+    right: 20px;
+    content: '';
+    width: 25px;
+    height: 15px;
+    background: #beb1a6;
+    color: #beb1a6;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.form__select select {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 1;
+    color: #d4d0ca;
+    border: none;
+    appearance: none;
+    outline: none;
+    background: transparent;
+}
+
+/* select option[selected] {
+    color: black;
+} */
+
+.form__select-item option:first-child {
+    color: black;
+}
+
+
+.form__input--textarea {
+    width: 100%;
+    text-align: left;
+}
+
+.form__input--textarea textarea {
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    height: 100px;
+    resize: none;
+}
+
+.form__input--textarea textarea::placeholder {
+    color: #d4d0ca;
+    line-height: 40px;
+    padding-left: 30px;
+}
+
+.form__button {
+    padding-top: 10px;
+}
+
+.form__button-submit {
+    cursor: pointer;
+    padding: 8px 35px;
+    background-color: #82756a;
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+    border: none;
 }
 
