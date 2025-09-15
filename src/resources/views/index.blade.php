@@ -18,12 +18,14 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input 
-                        type="text" 
-                        name="last_name" 
-                        placeholder="例: 山田" 
-                        value="{{ old('last_name') }}"
-                    >
+                    <div class="input__wrapper">
+                        <input 
+                            type="text" 
+                            name="last_name" 
+                            placeholder="例: 山田" 
+                            value="{{ old('last_name') }}"
+                        >
+                    </div>
                     <div class="form__error">
                         @error('last_name')
                             {{ $message }}
@@ -32,12 +34,14 @@
                 </div>
                 <span class="input__space"></span>
                 <div class="form__input--text">
-                    <input 
-                        type="text" 
-                        name="first_name" 
-                        placeholder="例: 太郎" 
-                        value="{{ old('first_name') }}"
-                    >
+                    <div class="input__wrapper">
+                        <input 
+                            type="text" 
+                            name="first_name" 
+                            placeholder="例: 太郎" 
+                            value="{{ old('first_name') }}"
+                        >
+                    </div>
                     <div class="form__error">
                         @error('first_name')
                             {{ $message }}
@@ -46,6 +50,7 @@
                 </div>
             </div>
         </div>
+
         <div class="form__group">
             <div class="form__group-title">
                 <span class="form__label--item">性別</span>
@@ -95,12 +100,14 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input 
-                        type="text" 
-                        name="email" 
-                        placeholder="例: test@example.com" 
-                        value="{{ old('email') }}"
-                    >
+                    <div class="input__wrapper">
+                        <input 
+                            type="text" 
+                            name="email" 
+                            placeholder="例: test@example.com" 
+                            value="{{ old('email') }}"
+                        >
+                    </div>
                     <div class="form__error">
                         @error('email')
                             {{ $message }}
@@ -116,47 +123,57 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input 
-                        type="text" 
-                        name="tel1" 
-                        maxlength="4" 
-                        placeholder="080" 
-                        value="{{ old('tel1') }}"
-                    >
-                    <div class="form__error">
-                        @error('tel1')
-                            {{ $message }}
-                        @enderror
-                    </div>
-
-                    <span class="input__hyphen-space">-</span>
-
-                    <input 
-                        type="text" 
-                        name="tel2" 
-                        maxlength="4" 
-                        placeholder="1234" 
-                        value="{{ old('tel2') }}"
-                    >
-                    <div class="form__error">
-                        @error('tel2')
-                            {{ $message }}
-                        @enderror
-                    </div>
-
-                    <span class="input__hyphen-space">-</span>
-
-                    <input 
-                        type="text" 
-                        name="tel3" 
-                        maxlength="4" 
-                        placeholder="5678" 
-                        value="{{ old('tel3') }}"
-                    >
-                    <div class="form__error">
-                        @error('tel3')
-                            {{ $message }}
-                        @enderror
+                    <div class="input__wrapper">
+                        <div class="tel-group__wapper">
+                            <input 
+                                type="text" 
+                                name="tel1" 
+                                maxlength="4" 
+                                placeholder="080" 
+                                value="{{ old('tel1') }}"
+                            >
+                            <div class="tel-wrapper">
+                                <div class="form__error">
+                                    @error('tel1')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <span class="input__hyphen-space">-</span>
+                        <div class="tel-group__wapper">
+                            <input 
+                                type="text" 
+                                name="tel2" 
+                                maxlength="4" 
+                                placeholder="1234" 
+                                value="{{ old('tel2') }}"
+                            >
+                            <div class="tel-wrapper">
+                                <div class="form__error">
+                                    @error('tel2')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <span class="input__hyphen-space">-</span>
+                        <div class="tel-group__wapper">
+                            <input 
+                                type="text" 
+                                name="tel3" 
+                                maxlength="4" 
+                                placeholder="5678" 
+                                value="{{ old('tel3') }}"
+                            >
+                            <div class="tel-wrapper">
+                                <div class="form__error">
+                                    @error('tel3')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -168,12 +185,14 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input 
-                        type="text" 
-                        name="address" 
-                        placeholder="例: 東京都渋谷区千駄ヶ谷1-2-3" 
-                        value="{{ old('address') }}"
-                    >
+                    <div class="input__wrapper">
+                        <input 
+                            type="text" 
+                            name="address" 
+                            placeholder="例: 東京都渋谷区千駄ヶ谷1-2-3" 
+                            value="{{ old('address') }}"
+                        >
+                    </div>
                     <div class="form__error">
                         @error('address')
                             {{ $message }}
@@ -204,34 +223,46 @@
             </div>
             <div class="form__group-content">
                 <div class="form__select">
-                    <select name="category_id" class="form__select-item">
-                        <option value="" hidden>選択してください</option>
-                        <option 
-                            value="1" 
-                            {{ old('category_id') == 1 ? 'selected' : '' }}
-                            >商品のお届けについて
-                        </option>
-                        <option 
-                            value="2" 
-                            {{ old('category_id') == 2 ? 'selected' : '' }}
-                            >商品の交換について
-                        </option>
-                        <option 
-                            value="3" 
-                            {{ old('category_id') == 3 ? 'selected' : '' }}
-                            >商品トラブル
-                        </option>
-                        <option 
-                            value="4" 
-                            {{ old('category_id') == 4 ? 'selected' : '' }}
-                            >ショップへのお問い合わせ
-                        </option>
-                        <option 
-                            value="5" 
-                            {{ old('category_id') == 5 ? 'selected' : '' }}
-                            >その他
-                        </option>
-                    </select>
+                    <div class="form__wrapper">
+                        <select name="category_id" class="form__select-item">
+                            <option 
+                                class="option-font__color__placeholder" 
+                                value="" 
+                                hidden
+                                >選択してください
+                            </option>
+                            <option 
+                                class="option-font__color"
+                                value="1" 
+                                {{ old('category_id') == 1 ? 'selected' : '' }}
+                                >商品のお届けについて
+                            </option>
+                            <option 
+                                class="option-font__color"
+                                value="2" 
+                                {{ old('category_id') == 2 ? 'selected' : '' }}
+                                >商品の交換について
+                            </option>
+                            <option 
+                                class="option-font__color"
+                                value="3" 
+                                {{ old('category_id') == 3 ? 'selected' : '' }}
+                                >商品トラブル
+                            </option>
+                            <option 
+                                class="option-font__color"
+                                value="4" 
+                                {{ old('category_id') == 4 ? 'selected' : '' }}
+                                >ショップへのお問い合わせ
+                            </option>
+                            <option 
+                                class="option-font__color"
+                                value="5" 
+                                {{ old('category_id') == 5 ? 'selected' : '' }}
+                                >その他
+                            </option>
+                        </select>
+                    </div>
                     <div class="form__error">
                         @error('category_id')
                             {{ $message }}

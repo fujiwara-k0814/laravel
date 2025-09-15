@@ -121,6 +121,7 @@
             </div>
         </form>
 
+        {{-- ページネーション処理 --}}
         @php
         $currentPage = request()->get('page', 1);
         $totalPages = $contacts->lastPage();
@@ -134,29 +135,40 @@
         <nav class="pagination">
             <ul>
                 <li>
+                {{-- 前のグループ処理 --}}
                 @if ($startPage > 1)
-                    <a href="{{ request()->fullUrlWithQuery(array_merge($query, ['page' => $startPage - 1])) }}"><</a>
+                    <a 
+                        href="{{ request()->fullUrlWithQuery(array_merge($query, ['page' => $startPage - 1])) }}"
+                        ><
+                    </a>
                 @else
                     <a href="#" class="disabled"><</a>
                 @endif
                 </li>
-
+                {{-- ページ番号処理 --}}
                 @for ($i = $startPage; $i <= $endPage; $i++)
                 <li>
-                    <a href="{{ request()->fullUrlWithQuery(array_merge($query, ['page' => $i])) }}"
-                    class="{{ $i == $currentPage ? 'is-active' : '' }}">{{ $i }}</a>
+                    <a 
+                        href="{{ request()->fullUrlWithQuery(array_merge($query, ['page' => $i])) }}"
+                        class="{{ $i == $currentPage ? 'is-active' : '' }}"
+                        >{{ $i }}
+                    </a>
                 </li>
                 @endfor
-
+                {{-- 次のグループ処理 --}}
                 <li>
                 @if ($endPage < $totalPages)
-                    <a href="{{ request()->fullUrlWithQuery(array_merge($query, ['page' => $endPage + 1])) }}">></a>
+                    <a 
+                        href="{{ request()->fullUrlWithQuery(array_merge($query, ['page' => $endPage + 1])) }}"
+                        >>
+                    </a>
                 @else
                     <a href="#" class="disabled">></a>
                 @endif
                 </li>
             </ul>
         </nav>
+        
 
     </div>
     <div class="admin-table">

@@ -98,3 +98,9 @@ input[name="password"]::placeholder {
     border: none;
     text-align: center;
 }
+
+.form__error {
+    font-size: 14px;
+    color: #ff9b9b;
+    text-align: left;
+}
