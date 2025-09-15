@@ -69,10 +69,11 @@
     background-color: #f5f5f5;
     border: none;
     box-sizing: border-box;
+    color: #887a6d;
 }
 
 .form__input--text input::placeholder {
-    color: #d4d0ca;
+    color: #beb1a6;
     font-size: 0.8rem;
 }
 

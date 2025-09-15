@@ -89,7 +89,6 @@
                     <input 
                         type="date" 
                         name="date" 
-                        placeholder="年/月/日" 
                         value="{{ old('date', request('date')) }}"
                     >
                 </div>
@@ -121,9 +120,44 @@
                 </button>
             </div>
         </form>
-        <div class="action__pagination">
-            {{ $contacts->appends(request()->query())->links() }}
-        </div>
+
+        @php
+        $currentPage = request()->get('page', 1);
+        $totalPages = $contacts->lastPage();
+        $groupSize = 5;
+        $startPage = floor(($currentPage - 1) / $groupSize) * $groupSize + 1;
+        $endPage = min($startPage + $groupSize - 1, $totalPages);
+
+        $query = request()->only(['keyword', 'gender', 'category_id', 'date']);
+        @endphp
+
+        <nav class="pagination">
+            <ul>
+                <li>
+                @if ($startPage > 1)
+                    <a href="{{ request()->fullUrlWithQuery(array_merge($query, ['page' => $startPage - 1])) }}"><</a>
+                @else
+                    <a href="#" class="disabled"><</a>
+                @endif
+                </li>
+
+                @for ($i = $startPage; $i <= $endPage; $i++)
+                <li>
+                    <a href="{{ request()->fullUrlWithQuery(array_merge($query, ['page' => $i])) }}"
+                    class="{{ $i == $currentPage ? 'is-active' : '' }}">{{ $i }}</a>
+                </li>
+                @endfor
+
+                <li>
+                @if ($endPage < $totalPages)
+                    <a href="{{ request()->fullUrlWithQuery(array_merge($query, ['page' => $endPage + 1])) }}">></a>
+                @else
+                    <a href="#" class="disabled">></a>
+                @endif
+                </li>
+            </ul>
+        </nav>
+
     </div>
     <div class="admin-table">
         <table class="admin-table__inner">
@@ -162,70 +196,72 @@
         </table>
     </div>
     @foreach ($contacts as $contact)
-        <div class="admin-mordal" id="modal-{{ $contact->id }}">
-            <div class="admin-modal__content">
-                <a href="#" class="admin-modal__close">×</a>
-                <table class="modal-table">
-                    <tr class="modal-table__row">
-                        <th class="modal-table__title">お名前</th>
-                        <td class="modal-table__text">
-                            {{ $contact->last_name }}
-                            <span class="modal-space"></span>
-                            {{ $contact->first_name }}
-                        </td>
-                    </tr>
-                    <tr class="modal-table__row">
-                        <th class="modal-table__title">性別</th>
-                        <td class="modal-table__text">
-                            {{ $contact->gender_label }}
-                        </td>
-                    </tr>
-                    <tr class="modal-table__row">
-                        <th class="modal-table__title">メールアドレス</th>
-                        <td class="modal-table__text">
-                            {{ $contact->email }}
-                        </td>
-                    </tr>
-                    <tr class="modal-table__row">
-                        <th class="modal-table__title">電話番号</th>
-                        <td class="modal-table__text">
-                            {{ $contact->tel }}
-                        </td>
-                    </tr>
-                    <tr class="modal-table__row">
-                        <th class="modal-table__title">住所</th>
-                        <td class="modal-table__text">
-                            {{ $contact->address }}
-                        </td>
-                    </tr>
-                    <tr class="modal-table__row">
-                        <th class="modal-table__title">建物名</th>
-                        <td class="modal-table__text">
-                            {{ $contact->building }}
-                        </td>
-                    </tr>
-                    <tr class="modal-table__row">
-                        <th class="modal-table__title">お問い合わせの種類</th>
-                        <td class="modal-table__text">
-                            {{ $contact->category_label }}
-                        </td>
-                    </tr>
-                    <tr class="modal-table__row">
-                        <th class="modal-table__title">お問い合わせ内容</th>
-                        <td class="modal-table__text">
-                            {{ $contact->detail }}
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <form action="/admin/delete" method="post" class="delete-form">
-                @method('DELETE')
-                @csrf
-                <div class="delete-form__button">
-                    <input type="hidden" name="id" value="{{ $contact->id }}">
-                    <button type="submit" class="delete-form__button-submit">削除</button>
+        <div class="admin-modal" id="modal-{{ $contact->id }}">
+            <div class="modal__wrapper">
+                <div class="admin-modal__content">
+                    <a href="#" class="admin-modal__close">×</a>
+                    <table class="modal-table">
+                        <tr class="modal-table__row">
+                            <th class="modal-table__title">お名前</th>
+                            <td class="modal-table__text">
+                                {{ $contact->last_name }}
+                                <span class="modal-space"></span>
+                                {{ $contact->first_name }}
+                            </td>
+                        </tr>
+                        <tr class="modal-table__row">
+                            <th class="modal-table__title">性別</th>
+                            <td class="modal-table__text">
+                                {{ $contact->gender_label }}
+                            </td>
+                        </tr>
+                        <tr class="modal-table__row">
+                            <th class="modal-table__title">メールアドレス</th>
+                            <td class="modal-table__text">
+                                {{ $contact->email }}
+                            </td>
+                        </tr>
+                        <tr class="modal-table__row">
+                            <th class="modal-table__title">電話番号</th>
+                            <td class="modal-table__text">
+                                {{ $contact->tel }}
+                            </td>
+                        </tr>
+                        <tr class="modal-table__row">
+                            <th class="modal-table__title">住所</th>
+                            <td class="modal-table__text">
+                                {{ $contact->address }}
+                            </td>
+                        </tr>
+                        <tr class="modal-table__row">
+                            <th class="modal-table__title">建物名</th>
+                            <td class="modal-table__text">
+                                {{ $contact->building }}
+                            </td>
+                        </tr>
+                        <tr class="modal-table__row">
+                            <th class="modal-table__title">お問い合わせの種類</th>
+                            <td class="modal-table__text">
+                                {{ $contact->category_label }}
+                            </td>
+                        </tr>
+                        <tr class="modal-table__row">
+                            <th class="modal-table__title">お問い合わせ内容</th>
+                            <td class="modal-table__text">
+                                {{ $contact->detail }}
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-            </form>
+                <form action="/admin/delete" method="post" class="delete-form">
+                    @method('DELETE')
+                    @csrf
+                    <div class="delete-form__button">
+                        <input type="hidden" name="id" value="{{ $contact->id }}">
+                        <button type="submit" class="delete-form__button-submit">削除</button>
+                    </div>
+                </form>
+            </div>
         </div>
     @endforeach
 </div>
