@@ -7,7 +7,7 @@
 }
 
 .confirm__heading {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     text-align: center;
 }
 
@@ -23,17 +23,22 @@
     margin: 0 auto;
 }
 
+.confirm-table {
+    height: 80%;
+}
+
 .confirm-table__inner {
     margin: 0 auto;
     text-align: left;
-    width: 70%;
+    width: 80%;
+    height: 100%;
     border-collapse: collapse;
 }
 
 .confirm-table__inner th,
 .confirm-table__inner td {
     border: 1px solid #efefee;
-    padding: 20px 20px 20px 40px;
+    padding: 15px 15px 15px 40px;
 }
 
 .confirm-table__inner th {
@@ -41,10 +46,15 @@
     color: white;
     font-weight: 300;
     width: 30%;
+    font-size: 18px;
 }
 
 .confirm-table__inner td {
     color: #8b7969;
+    font-family: "Inika", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 17px;
 }
 
 .confirm-table__text {
@@ -53,7 +63,7 @@
 
 .confirm__button-wrapper {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .button-group {

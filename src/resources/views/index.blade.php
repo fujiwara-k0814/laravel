@@ -226,37 +226,31 @@
                     <div class="form__wrapper">
                         <select name="category_id" class="form__select-item">
                             <option 
-                                class="option-font__color__placeholder" 
                                 value="" 
                                 hidden
                                 >選択してください
                             </option>
                             <option 
-                                class="option-font__color"
                                 value="1" 
                                 {{ old('category_id') == 1 ? 'selected' : '' }}
                                 >商品のお届けについて
                             </option>
                             <option 
-                                class="option-font__color"
                                 value="2" 
                                 {{ old('category_id') == 2 ? 'selected' : '' }}
                                 >商品の交換について
                             </option>
                             <option 
-                                class="option-font__color"
                                 value="3" 
                                 {{ old('category_id') == 3 ? 'selected' : '' }}
                                 >商品トラブル
                             </option>
                             <option 
-                                class="option-font__color"
                                 value="4" 
                                 {{ old('category_id') == 4 ? 'selected' : '' }}
                                 >ショップへのお問い合わせ
                             </option>
                             <option 
-                                class="option-font__color"
                                 value="5" 
                                 {{ old('category_id') == 5 ? 'selected' : '' }}
                                 >その他

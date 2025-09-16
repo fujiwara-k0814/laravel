@@ -86,11 +86,13 @@
                     </select>
                 </div>
                 <div class="search__select-date">
-                    <input 
-                        type="date" 
-                        name="date" 
-                        value="{{ old('date', request('date')) }}"
-                    >
+                    <div class="date-wrapper">
+                        <input 
+                            type="date" 
+                            name="date" 
+                            value="{{ old('date', request('date')) }}"
+                        >
+                    </div>
                 </div>
                 <div class="search-form__button">
                     <button 
@@ -121,7 +123,7 @@
             </div>
         </form>
 
-        {{-- ページネーション処理 --}}
+        {{-- ページネーション処理　開始 --}}
         @php
         $currentPage = request()->get('page', 1);
         $totalPages = $contacts->lastPage();
@@ -138,11 +140,12 @@
                 {{-- 前のグループ処理 --}}
                 @if ($startPage > 1)
                     <a 
+                        deta-group="previous"
                         href="{{ request()->fullUrlWithQuery(array_merge($query, ['page' => $startPage - 1])) }}"
                         ><
                     </a>
                 @else
-                    <a href="#" class="disabled"><</a>
+                    <a href="#" deta-group="previous" class="disabled"><</a>
                 @endif
                 </li>
                 {{-- ページ番号処理 --}}
@@ -159,16 +162,17 @@
                 <li>
                 @if ($endPage < $totalPages)
                     <a 
+                        deta-group="next"
                         href="{{ request()->fullUrlWithQuery(array_merge($query, ['page' => $endPage + 1])) }}"
                         >>
                     </a>
                 @else
-                    <a href="#" class="disabled">></a>
+                    <a href="#" deta-group="next" class="disabled">></a>
                 @endif
                 </li>
             </ul>
         </nav>
-        
+        {{-- ページネーション処理　終了 --}}
 
     </div>
     <div class="admin-table">
@@ -210,8 +214,10 @@
     @foreach ($contacts as $contact)
         <div class="admin-modal" id="modal-{{ $contact->id }}">
             <div class="modal__wrapper">
-                <div class="admin-modal__content">
+                <div class="modal-close__content">
                     <a href="#" class="admin-modal__close">×</a>
+                </div>
+                <div class="admin-modal__content">
                     <table class="modal-table">
                         <tr class="modal-table__row">
                             <th class="modal-table__title">お名前</th>
